@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include("connection.php");
@@ -6,7 +5,6 @@ extract($_REQUEST);
 if(!isset($_SESSION['admin']))
 {
 	header("location:admin.php");
-	
 }
 else
 {
@@ -22,7 +20,6 @@ $admin_info=mysqli_query($con,"select * from tbadmin where pld_username='$admin_
 $row_admin=mysqli_fetch_array($admin_info);
 $user= $row_admin['pld_username'];
 $pass= $row_admin['pld_password'];
-
 //update
 if(isset($update))
 {
@@ -35,12 +32,11 @@ else
 {
 	echo "failed";
 }
-
 }
 ?>
 <html>
   <head>
-     <title>Admin control panel</title>
+     <title>Admin Profile</title>
 	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -51,7 +47,6 @@ else
 		ul li a {color:black;}
 		ul li a:hover {color:black; font-weight:bold;}
 		ul li {list-style:none;}
-
 ul li a:hover{text-decoration:none;}
 #social-fb,#social-tw,#social-gp,#social-em{color:blue;}
 #social-fb:hover{color:#4267B2;}
@@ -61,10 +56,7 @@ ul li a:hover{text-decoration:none;}
 	 </style>
   </head>
  <body>
-
-	
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  
     <a class="navbar-brand" href="index.php"><span style="color:green;font-family: 'Permanent Marker', cursive;">Roopa Dental Materials</span></a>
     <?php
 	if(!empty($admin_username))
@@ -78,7 +70,6 @@ ul li a:hover{text-decoration:none;}
           <span class="navbar-toggler-icon"></span>
         </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-	
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           <a class="nav-link" href="index.php">Home</a>
@@ -105,18 +96,13 @@ ul li a:hover{text-decoration:none;}
             </li>
 			<?php
 		}
-		
 		?>
-		
       </ul>
-	  
     </div>
-	
 </nav>
 <!--navbar ends-->
 <br><br><br><br>
 <!--details section-->
- 
 <div class="container">
        <!--tab heading-->
 	   <ul class="nav nav-tabs nabbar_inverse" id="myTab" style="background:#ED2553;border-radius:10px 10px 10px 10px;" role="tablist">
@@ -141,13 +127,9 @@ ul li a:hover{text-decoration:none;}
 			 </form>
 			</div>
 			<!--tab ends-->
-	 
 	<br><br><br>
  <?php
 			include("footer.php");
 			?>
-		  
-
 </body>
-	
 </html>	

@@ -17,7 +17,6 @@ if(mysqli_num_rows($query))
      $rpaymentmode=$row['paymentmode'];
      $rpldimageold=$row['pldimage'];
 	 $em=$_SESSION['id'];
-	
 }
 else
 {
@@ -39,16 +38,12 @@ if(isset($update))
    {
     $paymentmode=implode(",",$chk);
     $img_name=$_FILES['product_pic']['name'];
-    
-    
     if(!empty($chk)) 
 	{
 		if(empty($img_name))
-			
 	       {
 		          $paymentmode=implode(",",$chk);
 	              if(mysqli_query($con,"update  tbproduct  set productname='$product_name',cost='$cost',description='$description',paymentmode='$paymentmode' where product_id='$product_id'"))
-	   
 	                {
 						header("location:update_product.php?product_id=$product_id"); 
 	                 }
@@ -56,9 +51,6 @@ if(isset($update))
 		               echo "failed";
 	                  }
 	        }
-			
-			
-	
 	     else
 		 {
 			     $paymentmode=implode(",",$chk);
@@ -68,7 +60,6 @@ if(isset($update))
 			     echo $paymentmode."<br>";
 			     echo $img_name."<br>";
 	             if(mysqli_query($con,"update  tbproduct  set productname='$product_name',cost='$cost',description='$description',paymentmode='$paymentmode', pldimage='$img_name' where product_id='$product_id'"))
-	
 	                {
 		             echo "update with new pic";
 		             move_uploaded_file($_FILES['product_pic']['tmp_name'],"image/supplier/$em/productimages/".$_FILES['product_pic']['name']);
@@ -80,13 +71,10 @@ if(isset($update))
 					 echo "failed to upload new pic";
 				}					 
 		 }
-	
 	}
-	
 	else
 	{
 	  $paymessage="please select a payment mode";
-  
     }
    }
    else
@@ -103,7 +91,7 @@ if(isset($logout))
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Update Products</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -116,25 +104,20 @@ if(isset($logout))
 	 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
      <style>
-		ul li{}
 		ul li a {color:black;padding:40px; }
 		ul li a:hover {color:black;}
 	 </style>
-
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  
     <a class="navbar-brand" href="../index.php"><span style="color:green;font-family: 'Permanent Marker', cursive;">Roopa Dental Materials</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-	
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           <a class="nav-link" href="index.php">Home
-                
               </a>
         </li>
         <li class="nav-item">
@@ -155,7 +138,6 @@ if(isset($logout))
 		   <button class="btn btn-outline-danger my-2 my-sm-0" name="login">Log In</button>&nbsp;&nbsp;&nbsp;
             <?php
 			} else {
-			
 			?>
 			<button class="btn btn-outline-success my-2 my-sm-0" name="logout" type="submit">Log Out</button>&nbsp;&nbsp;&nbsp;
 			<?php
@@ -164,14 +146,9 @@ if(isset($logout))
 			</form>
         </li>
 	  </ul>
-	  
     </div>
-	
 </nav>
-
 <!--navbar ends-->
-
-
 <br><br>
 <div class="middle" style=" position:fixed; padding:40px; border:1px solid #ED2553;  width:100%;">
        <!--tab heading-->
@@ -179,7 +156,6 @@ if(isset($logout))
           <li class="nav-item">
              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#viewitem" role="tab" aria-controls="home" aria-selected="true">Update Products</a>
           </li>
-         
               <a class="nav-link" style="color:white;" id="profile-tab"  aria-selected="false">Product Details</a>
        </ul>
 	   <br><br>
